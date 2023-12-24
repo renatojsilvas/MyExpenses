@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  expenses-1:
+    image: renatojsilvas/expenses:latest
+    hostname: expenses-1
+    expose:
+      - "8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - expenses-network
+
+  expenses-2:
+    image: renatojsilvas/expenses:latest
+    hostname: expenses-2
+    expose:
+      - "8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - expenses-network
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "9000:8080"
+    depends_on:
+      - expenses-1
+      - expenses-2
+    networks:
+      - expenses-network
+
+networks:
+  expenses-network:
+    driver: bridge

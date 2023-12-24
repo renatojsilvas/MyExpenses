@@ -73,7 +73,7 @@ jobs:
           script: |
             echo "Recreate folder"
             rm -rf /var/www/expenses/prd
-            mkdir /var/www/expenses/prd
+            mkdir -p /var/www/expenses/prd
             cd /var/www/expenses/prd
             wget https://raw.githubusercontent.com/renatojsilvas/MyExpenses/main/docker-compose.yml
             wget https://raw.githubusercontent.com/renatojsilvas/MyExpenses/main/nginx.conf

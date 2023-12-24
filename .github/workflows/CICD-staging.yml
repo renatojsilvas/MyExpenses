@@ -73,7 +73,7 @@ jobs:
           script: |
             echo "Recreate folder"
             rm -rf /var/www/expenses/staging
-            mkdir /var/www/expenses/staging
+            mkdir -p /var/www/expenses/staging
             cd /var/www/expenses/staging
             wget https://raw.githubusercontent.com/renatojsilvas/MyExpenses/develop/docker-compose-staging.yml
             wget https://raw.githubusercontent.com/renatojsilvas/MyExpenses/develop/nginx.conf
